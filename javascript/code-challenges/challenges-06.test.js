@@ -24,7 +24,7 @@ Returns: ['dyoll', 'eimaj'];
 
 const getNames = (arr) => arr.map(person => person.name.split('').reverse().join(''));
 //Split the input string into an array of its letters using split(), be sure to include an empty string to ensure that it splits by each character
-//Join array of letters together and include empty string to make sure there's nothing in between the letters 
+//Join array of letters together and include empty string to make sure there's nothing in between the letters
 
 
 /* ------------------------------------------------------------------------------------------------
@@ -81,7 +81,7 @@ setStatusAsAuthor(people);
 console.log(people[1].isAuthor) prints true
 ------------------------------------------------------------------------------------------------ */
 
-const setStatusAsAuthor = (people) => people.map(people => people.isAuthor = true);
+const setStatusAsAuthor = (people) => people.forEach(people => people.isAuthor = true);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6 - Stretch Goal
