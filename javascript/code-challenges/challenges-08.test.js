@@ -52,15 +52,22 @@ let characters = [
   }
 ];
 
+// help from Ethan during code challenge review
+
 const sortByChildren = (charArray) => {
-  charArray.sort((a, b) => {
-    if (a.children.length === b.children.length){
-      return a.name - b.name;
-    } else {
-      return a.children.length - b.children.length;
+  function compareChildren(a, b) {
+    if (a.children.length < b.children.length) {
+      return -1;
     }
-  });
+    if (a.children.length > b.children.length) {
+      return 1;
+    } else {
+      return a.house > b.house ? 1 : -1;
+    }
+  }
+  return charArray.sort(compareChildren);
 };
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
@@ -101,16 +108,14 @@ Write a function named isCapitalized that takes in a string. This function shoul
 Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
-const isCapitalized = (str) => str.match(/[A-Z]/g);
+const isCapitalized = (str) => str.match(/[A-Z]\w+/g) || [];
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
 
 Write a function named citiesAtoJ that takes in an array of city names and uses a regular expression pattern to return a new array containing any cities that begin with the letters A through J, inclusive.
 ------------------------------------------------------------------------------------------------ */
 
-const citiesAtoJ = (arr) => {
-  // Solution code here...
-};
+const citiesAtoJ = (arr) => arr.filter(str => str.match(/^[A-J]\w+/g));
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
