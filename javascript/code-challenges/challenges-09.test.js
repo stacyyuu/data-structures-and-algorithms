@@ -56,7 +56,8 @@ HR has asked you to change the data to make it easier to print so that it looks 
 
 ------------------------------------------------------------------------------------------------ */
 
-const updateNumbers = (obj) => Object.keys(obj).map((key) => [key, obj[key]]);
+// help from Camilla during code review
+const updateNumbers = (obj) => Object.entries(obj).map(element => element.join(': '));
 
 
 
@@ -109,9 +110,11 @@ const characters = [
   },
 ];
 
+
+// help from Manuch during code review
 const getHouses = (arr) => {
   let houses = [];
-  // Solution code here...
+  houses = arr.map(character => Object.entries(character).pop().pop());
   return houses;
 };
 
@@ -127,10 +130,8 @@ hasChildrenValues(characters, 'Cersei') will return true
 hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
-const hasChildrenValues = (arr, character) => {
-  // Solution code here...
-
-};
+// help from Manuch during code review 
+const hasChildrenValues = (arr, character) => Object.values(arr).find(element => element.name === character && element.children);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
