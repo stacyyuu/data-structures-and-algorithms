@@ -9,7 +9,7 @@ Write a function named returnTen, takes in a string and uses split and splice to
 
 function returnTen(str){
   // Solution code here...
-  return str.split('').splice();
+  return str.split('').splice(-10);
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -26,16 +26,8 @@ For example:
 
 return: 23
 ------------------------------------------------------------------------------------------------ */
-const findMax = (matrix) => {
-  // Solution code here...
-  let highestVal = 0;
-  for (let i = 0; i < matrix.length; i++){
-    for (let j = 0; j < matrix[i].length; j++){
-      highestVal = Math.max(matrix[i][j]);
-    }
-  }
-  return highestVal;
-};
+// help from Ethan during code review
+const findMax = (matrix) => Math.max(...matrix.map(idx => Math.max(...idx)));
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -56,7 +48,7 @@ const totalSum = (matrix) => {
   let sum = 0;
   for (let i = 0; i < matrix.length; i++){
     for (let j = 0; j < matrix[i].length; j++){
-      sum = sum + matrix[i][j];
+      sum += matrix[i][j];
     }
   }
   return sum;
@@ -108,7 +100,9 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
-  // Solution code here...
+  let salesData = [];
+  hours.forEach((hour, index) => salesData.push({ sales: data[index] + ' cookies', time: hour}));
+  return salesData;
 };
 
 
@@ -138,6 +132,8 @@ const errands = [
 
 const howManyTreats = (arr) => {
   // Solution code here...
+  return arr.find(obj => obj.store === 'Pet store').items.find(obj => obj.name === 'Treats').quantity;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
