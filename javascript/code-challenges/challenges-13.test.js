@@ -39,7 +39,7 @@ Write a function named standardizePhoneNumbers that takes in an array of phone n
 For example, (123) 456-7890 returns 1234567890
 ------------------------------------------------------------------------------------------------ */
 
-const standardizePhoneNumbers = (arr) =>{};
+const standardizePhoneNumbers = (arr) => arr.map(str => str.substr(1, 3) + str.substr(6, 3) + str.substr(10, 5));
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -49,24 +49,15 @@ Write a function named onlyOddChars that takes in a string and returns only the 
 For example, 'abcdefg' returns 'bdf'
 ------------------------------------------------------------------------------------------------ */
 
-const onlyOddChars = (str) => {
-  let string = '';
-  for (let i = 0; i < str.length; i++){
-    if (str.charAt(str[i] % 2 !== 0)) {
-      string = str[i];
-    }
-  }
-  return string;
-  // Solution code here...
-};
+const onlyOddChars = (str) => str.split('').filter((char, index) => index % 2 !== 0).join('');
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
 
 Write a function named allHappy that takes in an array of strings and returns a Boolean indicating whether all those strings contain ":)".
 ------------------------------------------------------------------------------------------------ */
-
-const allHappy = (arr) => {};
+// help during code challenge!!
+const allHappy = (arr) => arr.every(str => str.includes(':)')) ? true : false;
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
