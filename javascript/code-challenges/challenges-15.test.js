@@ -10,7 +10,7 @@ Write a function named screenForNames that takes in an array of strings and uses
 
 ------------------------------------------------------------------------------------------------ */
 
-const screenForNames = (arr) => arr.filter(str => str.match(/^(Mr. |Mrs. |Ms. |Dr. )+[A-Za-z ]+/g));
+const screenForNames = (arr) => arr.filter(str => str.match(/^(?:Mrs|Mr|Dr|Ms)+.(?:\s)[A-Za-z]+/g));
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -93,7 +93,7 @@ let starWarsData = [{
   gender: 'n/a'
 }];
 
-let biggerThanLuke = (arr) => {};
+let biggerThanLuke = (arr) => arr.filter(char => char.mass > 77).map(char => char.name).join(' - ');
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -108,7 +108,7 @@ Here is an example of the input:
 
 This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
-const sortBy = (property, arr) => arr.sort((property, b) => property.price - b.price);
+const sortBy = (property, arr) => arr.sort((a, b) => a[property] > b[property] ? 1 : -1);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -143,9 +143,33 @@ Here is a sample board:
 ];
 ------------------------------------------------------------------------------------------------ */
 
+
+// assistance from gaz!!
 const detectTicTacToeWin = (board) => {
-  // Solution code here...
+  const flattened = board.flatMap(el => el);
+  let checkWin = (index, entries) => {
+    let player = entries[index];
+    if (player === '') return false;
+    if (entries[index + 3] === player && entries[index + 3 + 3] === player) { // Vertical test
+      return true;
+    }
+    if (index % 3 === 0 && entries[index + 1] === player && entries[index + 1 + 1] === player) {
+      return true;
+    }
+    if (entries[index + 4] === player && entries[index + 4 + 4] === player) { // Diagonal test left -> right
+      return true;
+    }
+    if (index % 3 === 0 && entries[index - 2] === player && entries[index - 2 - 2] === player) { // Diagonal right -> left
+      return true;
+    }
+    return false;
+  };
+
+  for (let i = 0; i < flattened.length; i++) {
+    return(checkWin(i, flattened));
+  }
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
