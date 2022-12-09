@@ -6,4 +6,4 @@ Without using any built-in methods, return an array with elements in reversed or
 <img src = "array-reverse.png">
 
 ## Approach & Efficiency
-I used a for loop for this approach because it seemed to be the simplest way with the knowledge I currently have. 
+I used a for loop for this approach because it seemed to be the simplest way with the knowledge I currently have.
