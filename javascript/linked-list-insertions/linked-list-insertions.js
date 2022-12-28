@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 class Node {
   constructor(value, next = null) {
@@ -12,43 +12,58 @@ class LinkedList {
     this.head = null;
   }
 
-  append(value){
+  append(value) {
     let newNode = new Node(value);
-    if(!this.head){
+    if (!this.head) {
       this.head = newNode;
-      return;
+      return this.head;
+    } else {
+      let current = this.head;
+      while (current.next) {
+        current = current.next;
+      }
+      current.next = newNode;
+      return this.head;
+    }
+  }
+
+  insertBefore(value, newValue) {
+    let newNode = new Node(newValue);
+    // check the head to see if it's our value
+    if (this.head.value === value) {
+      newNode.next = this.head;
+      this.head = newNode;
+      return this.head;
     }
     let current = this.head;
-    while (current.next){
-      current = current.next;
-    }
-    current.next = newNode;
-  }
-
-  insertBefore(value, newValue){
-    if (this.head === newValue){
-      let current = new Node(value);
-      current.next = this.head;
-      this.head = current;
-    } else {
-      while (this.head !== null){
-        if (this.head.value === newValue){
-          let current = new Node(value);
-          current.next = newValue.next;
-          newValue.next = current;
-        }
+    while (current.next) {
+      if (current.next.value === value) {
+        newNode.next = current.next;
+        current.next = newNode;
+        return this.head;
+      } else {
+        current = current.next;
       }
     }
+    return this.head;
+    // return list here
   }
 
-  insertAfter(value, newValue){
-    if (newValue === null){
-      newValue = new Node(value);
-      return;
+  insertAfter(value, newValue) {
+    let newNode = new Node(newValue);
+    let current = this.head;
+    while (current) {
+      if (current.value === value) {
+        newNode.next = current.next;
+        current.next = newNode;
+        return this.head;
+      } else {
+        current = current.next;
+      }
     }
-
-    let current = new Node(value);
-    current.next = newValue.next;
-    newValue.next = current;
+    return this.head;
+    // return list here
   }
 }
+
+module.exports = LinkedList;
