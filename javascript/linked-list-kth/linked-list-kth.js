@@ -15,15 +15,15 @@ class LinkedList {
   kthFromEnd(k){
     let length = 0;
     let current = this.head;
-    while (current !== null){
+    while (current){
       current = current.next;
       length++;
     }
-    if (k > length){
-      return;
+    if (k > length || k < 0){
+      return undefined;
     }
     current = this.head;
-    for (let i = 0; i < length - k + 1; i++){
+    for (let i = 1; i < length - k + 1; i++){
       current = current.next;
       return current.value;
     }

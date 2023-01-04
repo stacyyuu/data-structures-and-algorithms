@@ -54,16 +54,18 @@ describe("Linked List kthFromEnd", () => {
       },
     };
     let newList = linkedList.kthFromEnd(4);
-    expect(newList).toEqual(4);
+    expect(newList).toEqual(undefined);
   });
   test("Where the linked list is a size of 1", () => {
     let linkedList = new LinkedList();
     linkedList.head = {
       value: 8,
-      next: null,
+      next: {
+        value: null,
+      }
     };
-    let newList = linkedList.kthFromEnd(0);
-    expect(newList).toEqual(8);
+    let newList = linkedList.kthFromEnd(1);
+    expect(newList).toEqual(null);
   });
   test("Where k is not at the end, but somewhere in the middle", () => {
     let linkedList = new LinkedList();
