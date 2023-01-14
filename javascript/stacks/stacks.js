@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 class Node {
   constructor(value, next = null) {
@@ -25,17 +25,17 @@ class Stack {
   pop() {
     if (this.isEmpty()) {
       return;
-    } else {
-      let current = this.top;
-      let temp = current;
-      current = current.next;
-      temp.next = null;
-      return temp.value;
     }
+    let current = this.top;
+    // let temp = current;
+    this.top = current.next;
+    return current.value;
+    // temp.next = null;
+    // return temp.value;
   }
 
-  peek(){
-    if (this.isEmpty()){
+  peek() {
+    if (this.isEmpty()) {
       return;
     } else {
       let current = this.top;
@@ -43,10 +43,9 @@ class Stack {
     }
   }
 
-  isEmpty(){
+  isEmpty() {
     return this.top === null;
   }
 }
-
 
 module.exports = Stack;

@@ -37,7 +37,7 @@ describe('Stack tests', () => {
     stack.pop();
     stack.pop();
     stack.pop();
-    expect(stack).toEqual({ top: { next: null, value: 5 }});
+    expect(stack).toEqual({ top: null });
   });
   test('Peek the next item on stack', () => {
     let stack = new Stack();
