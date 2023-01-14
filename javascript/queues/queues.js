@@ -29,10 +29,11 @@ class Queue {
       return;
     } else {
       let current = this.front;
-      let temp = current;
-      current = current.next;
-      temp.next = null;
-      return temp.value;
+      // let temp = current;
+      this.front = current.next;
+      return current.value;
+      // temp.next = null;
+      // return temp.value;
     }
   }
 
