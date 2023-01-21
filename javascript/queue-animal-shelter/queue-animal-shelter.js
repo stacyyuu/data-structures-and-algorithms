@@ -23,12 +23,10 @@ class AnimalShelter {
 
   dequeueAnimal(pref){
     if (pref === 'cat') {
-      this.catQueue.dequeue();
-      return;
+      return this.catQueue.dequeue();
     }
     if (pref === 'dog'){
-      this.catQueue.dequeue();
-      return;
+      return this.dogQueue.dequeue();
     } else {
       return 'null';
     }
