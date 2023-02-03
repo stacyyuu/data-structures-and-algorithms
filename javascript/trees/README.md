@@ -6,5 +6,9 @@
 - add: arguments: value, returns: nothing.
 - contains: arguments: value, returns boolean indicating whether or not the value is in the tree at least once.
 
+## Whiteboard Process
+For findMax:
+<img src ="tree-max.png">
+
 ## Approach & Efficiency
-I worked a lot with recursion in order to handle these methods. It was helpful to incorporate a helper function in the methods in order to do the recursion. 
+I worked a lot with recursion in order to handle these methods. It was helpful to incorporate a helper function in the methods in order to do the recursion.
