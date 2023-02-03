@@ -75,6 +75,26 @@ class BinaryTree {
     _walk(this.root);
     return result;
   }
+
+  findMax() {
+    if (!this.root) {
+      return;
+    }
+
+    let max = this.root.value;
+
+    let _walk = (node) => {
+      if (node.value > max) {
+        max = node.value;
+      }
+
+      if (node.left) _walk(node.left);
+      if (node.right) _walk(node.right);
+    };
+
+    _walk(this.root);
+    return max;
+  }
 }
 
 class BST extends BinaryTree {
@@ -123,7 +143,8 @@ class BST extends BinaryTree {
         } else {
           return false;
         }
-      } if (number < current.value) {
+      }
+      if (number < current.value) {
         if (current.left) {
           return _walk(current.left, number);
         } else {
@@ -137,4 +158,5 @@ class BST extends BinaryTree {
 module.exports = {
   BinaryTree,
   BST,
+  BTNode,
 };
