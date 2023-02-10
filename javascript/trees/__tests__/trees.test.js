@@ -1,12 +1,4 @@
 const { BinaryTree, BST, BTNode } = require('../trees');
-// const tree = new BinaryTree(new Node( 1, new Node(7, new Node(2), new Node(6, new Node(3), new Node(11))), new Node(9, undefined, new Node(9, new Node(5)))));
-// Can successfully instantiate an empty tree
-// Can successfully instantiate a tree with a single root node
-// For a Binary Search Tree, can successfully add a left child and right child properly to a node
-// Can successfully return a collection from a preorder traversal
-// Can successfully return a collection from an inorder traversal
-// Can successfully return a collection from a postorder traversal
-// Returns true	false for the contains method, given an existing or non-existing node value
 
 describe('Binary Tree tests', () => {
   test('Can successfully instantiate an empty tree', () => {
