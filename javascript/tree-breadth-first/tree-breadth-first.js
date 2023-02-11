@@ -24,7 +24,7 @@ class BinaryTree {
 
     while(!queue.isEmpty()){
       node = queue.dequeue();
-      result.push(node);
+      result.push(node.value);
 
       if(node.left) queue.enqueue(node.left);
       if(node.right) queue.enqueue(node.right);
@@ -33,4 +33,7 @@ class BinaryTree {
   }
 }
 
-module.exports = { BinaryTree };
+module.exports = {
+  BinaryTree,
+  BTNode
+};
