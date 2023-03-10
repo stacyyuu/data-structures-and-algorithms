@@ -2,7 +2,7 @@
 
 function sortYear(movies) {
   return movies.sort((a, b) => {
-    if(b.year - a.year === 0){
+    if (b.year - a.year === 0) {
       return b.title.localeCompare(a.title);
     } else {
       return b.year - a.year;
@@ -17,4 +17,11 @@ function sortTitle(movies) {
   });
 }
 
-module.exports = { sortYear, sortTitle };
+const compareYear = (a, b) => b - a;
+
+const compareTitle = (a, b) => {
+  let check = /^The /;
+  return a.replace(check, '').localeCompare(b.replace(check, ''));
+};
+
+module.exports = { sortYear, sortTitle, compareYear, compareTitle };

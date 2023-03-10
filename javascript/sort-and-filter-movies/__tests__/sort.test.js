@@ -1,5 +1,5 @@
-const { Movies } = require('./movies');
-const { sortTitle, sortYear } = require('./sort');
+const { Movies } = require('../movies');
+const { sortTitle, sortYear, compareTitle, compareYear } = require('../sort');
 
 describe('Sorters', () => {
   it('can sort movies by year', () => {
@@ -20,7 +20,6 @@ describe('Sorters', () => {
 
   it('can sort movies by title', () => {
     const movies = sortTitle(Movies);
-    console.log(movies);
     expect(movies.map((m) => m.title)).toEqual([
       'Beetlejuice',
       'City of God',
@@ -33,5 +32,17 @@ describe('Sorters', () => {
       'Stardust',
       'Valkyrie',
     ]);
+  });
+});
+
+describe('Comparators', () => {
+  it('can compare movies by year', () => {
+    const movies = compareYear(Movies[0].year, Movies[3].year);
+    expect(movies).toEqual(-2);
+  });
+  
+  it('can compare movies by title', () => {
+    const movies = compareTitle(Movies[1].title, Movies[2].title);
+    expect(movies).toEqual(-1);
   });
 });
