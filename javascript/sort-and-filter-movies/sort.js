@@ -1,12 +1,19 @@
 'use strict';
 
 function sortYear(movies) {
-  return movies.sort((a, b) => b.year - a.year);
+  return movies.sort((a, b) => {
+    if(b.year - a.year === 0){
+      return b.title.localeCompare(a.title);
+    } else {
+      return b.year - a.year;
+    }
+  });
 }
 
 function sortTitle(movies) {
   return movies.sort((a, b) => {
-    a.title.replace('The', '').localeCompare(b.title.replace('The', ''));
+    let check = /^The /;
+    return a.title.replace(check, '').localeCompare(b.title.replace(check, ''));
   });
 }
 
