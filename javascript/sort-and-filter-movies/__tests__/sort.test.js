@@ -40,7 +40,7 @@ describe('Comparators', () => {
     const movies = compareYear(Movies[0].year, Movies[3].year);
     expect(movies).toEqual(-2);
   });
-  
+
   it('can compare movies by title', () => {
     const movies = compareTitle(Movies[1].title, Movies[2].title);
     expect(movies).toEqual(-1);
