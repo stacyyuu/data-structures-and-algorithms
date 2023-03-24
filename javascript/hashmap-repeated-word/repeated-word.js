@@ -1,5 +1,4 @@
 'use strict';
-const Hashtable = require('../hashtable/hashtable');
 
 function repeatedWord(str) {
   const words = str.toLowerCase().split(' ');
@@ -9,7 +8,7 @@ function repeatedWord(str) {
     if (wordMap.has(words[i])) {
       return words[i];
     } else {
-      wordMap.set(words[i], i);
+      wordMap.set(words[i], 1);
     }
   }
 }
