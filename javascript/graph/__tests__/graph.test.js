@@ -36,4 +36,15 @@ describe('Graph Tests', () =>{
     let newGraph = new Graph();
     expect(newGraph.getNeighbors()).toEqual();
   });
+  test('Breadth first traversal', () => {
+    let traversal = new Graph();
+    traversal.addNode(11);
+    traversal.addNode(13);
+    traversal.addNode(15);
+    traversal.addNode(16);
+    traversal.addEdge(11, 13);
+    traversal.addEdge(11, 15);
+    traversal.addEdge(15, 16);
+    expect(traversal.breadthFirst(11)).toEqual();
+  });
 });

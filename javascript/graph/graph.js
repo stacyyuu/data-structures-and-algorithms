@@ -19,6 +19,7 @@ class Graph {
     this.nodes = new Set();
     this.edges = new Map();
   }
+
   addNode(value) {
     let newNode = new Node(value);
     this.nodes.add(newNode);
@@ -52,7 +53,27 @@ class Graph {
     return this.edges.get(node);
     // all edges where from is node
   }
+
+  breadthFirst(start){
+    const queue = [start];
+    const visited = new Set();
+    visited.add(start);
+
+    while(queue.length > 0){
+      const current = queue.shift();
+
+      this.getNeighbors(start)
+      .filter(n => !visited.has(n))
+      .forEach(n =>{
+        visited.add(n);
+        queue.shift(n);
+      })
+    }
+
+    return visited;
+  }
 }
+
 
 module.exports = Graph;
 ;
