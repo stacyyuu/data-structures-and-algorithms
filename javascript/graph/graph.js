@@ -42,7 +42,7 @@ class Graph {
 
   getNeighbors(node) {
     // neighbors are the other ends of edges
-    if(!node) return;
+    if(!this.edges.has(node)) return;
     let result = [];
     const edges = this.getEdges(node);
     edges.map((edge) => result.push([edge.to, edge.weight]));
@@ -55,22 +55,21 @@ class Graph {
   }
 
   breadthFirst(start){
-    const queue = [start];
-    const visited = new Set();
-    visited.add(start);
+    const traversal = [];
+    const visited = {};
+    const todo = [start];
 
-    while(queue.length > 0){
-      const current = queue.shift();
+    while(todo.length > 0){
+      let current = todo.shift();
+      if (!visited[current]){
+        traversal.push(current);
+        visited[current] = true;
 
-      this.getNeighbors(start)
-      .filter(n => !visited.has(n))
-      .forEach(n =>{
-        visited.add(n);
-        queue.shift(n);
-      })
+        let neighbors = this.getNeighbors(current);
+        neighbors.forEach(neighbor => todo.push(neighbor))
+      }
     }
-
-    return visited;
+    return traversal;
   }
 }
 
