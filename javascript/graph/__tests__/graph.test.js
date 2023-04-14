@@ -41,10 +41,19 @@ describe('Graph Tests', () =>{
     traversal.addNode(11);
     traversal.addNode(13);
     traversal.addNode(15);
-    traversal.addNode(16);
-    traversal.addEdge(11, 13);
-    traversal.addEdge(11, 15);
-    traversal.addEdge(15, 16);
+    traversal.addUndirectedEdge(11, 13);
+    traversal.addUndirectedEdge(11, 15);
+    traversal.addUndirectedEdge(13, 15);
+    expect(traversal.breadthFirst(11)).toEqual();
+  });
+  test('Depth first traversal', () => {
+    let traversal = new Graph();
+    traversal.addNode(11);
+    traversal.addNode(13);
+    traversal.addNode(15);
+    traversal.addUndirectedEdge(11, 13);
+    traversal.addUndirectedEdge(11, 15);
+    traversal.addUndirectedEdge(13, 15);
     expect(traversal.breadthFirst(11)).toEqual();
   });
 });
