@@ -15,7 +15,7 @@ class Edge {
 }
 
 class Graph {
-  constructor(){
+  constructor() {
     this.nodes = new Set();
     this.edges = new Map();
   }
@@ -35,14 +35,14 @@ class Graph {
     return edge;
   }
 
-  addUndirectedEdge(a, b, weight){
+  addUndirectedEdge(a, b, weight) {
     this.addEdge(a, b, weight);
     this.addEdge(b, a, weight);
   }
 
   getNeighbors(node) {
     // neighbors are the other ends of edges
-    if(!this.edges.has(node)) return;
+    if (!this.edges.has(node)) return;
     let result = [];
     const edges = this.getEdges(node);
     edges.map((edge) => result.push([edge.to, edge.weight]));
@@ -54,25 +54,39 @@ class Graph {
     // all edges where from is node
   }
 
-  breadthFirst(start){
+  breadthFirst(start) {
     const traversal = [];
-    const visited = {};
-    const todo = [start];
+    const visited = new Set();
+    let todo = [start];
 
-    while(todo.length > 0){
-      let current = todo.shift();
-      if (!visited[current]){
+    while (todo.length > 0) {
+      const current = todo.shift();
+      if (!visited.has(current)) {
         traversal.push(current);
-        visited[current] = true;
+        visited.add(current);
 
-        let neighbors = this.getNeighbors(current);
-        neighbors.forEach(neighbor => todo.push(neighbor))
+        todo = [...todo, ...this.getNeighbors(current)];
+      }
+    }
+    return traversal;
+  }
+
+  dft(start) {
+    const traversal = [];
+    const visited = new Set();
+    let todo = [start];
+
+    while (todo.length > 0) {
+      const current = todo.pop();
+      if (!visited.has(current)) {
+        traversal.push(current);
+        visited.add(current);
+
+        todo = [...todo, ...this.getNeighbors(current)];
       }
     }
     return traversal;
   }
 }
 
-
 module.exports = Graph;
-;
